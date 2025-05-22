@@ -29,7 +29,7 @@ def verificar_especificacoes_filtro(coefs_filtro, indices_n_filtro):
     return ganho_min_passabanda, atenuacao_max_rejeicao, ganho_max_passabanda
 
 
-ordem_atual_M = int(np.ceil(3.3 * np.pi / transition_width_rad))
+ordem_atual_M = int(np.ceil(3.1 * 2 * np.pi / transition_width_rad))
 if ordem_atual_M % 2:
     ordem_atual_M += 1
 
