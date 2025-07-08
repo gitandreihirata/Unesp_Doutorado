@@ -1,15 +1,12 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import freqz
 
-omega_p = 0.1 * np.pi
-omega_s = 0.4 * np.pi
-delta_omega = omega_s - omega_p
+M = 22
+omega_c = 0.25 * np.pi
 
-delta_t_norm = delta_omega / np.pi
-M = int(np.ceil(3.0 / delta_t_norm))
-
-omega_c = (omega_p + omega_s) / 2
 alpha = omega_c / np.pi
-center = M / 2
+center = M / 2.0
 
 n = np.arange(M + 1)
 h_ideal = np.zeros(M + 1)
@@ -20,20 +17,36 @@ for i in n:
     else:
         h_ideal[i] = np.sin(np.pi * alpha * (i - center)) / (np.pi * (i - center))
 
-w_barlett = np.bartlett(M + 1)
+w_hanning = np.hanning(M + 1)
 
-h = h_ideal * w_barlett
+h = h_ideal * w_hanning
 
 h_norm = h / np.sum(h)
 
-print("--- Prova Final: Exercício (2) ---")
-print(f"\nOrdem do Filtro (M) calculada: {M}")
+print("--- Exercício (2) com M=22 e Janela de Hanning ---")
+
 print("\nCoeficientes Normalizados do Filtro h[n]:")
-print(np.round(h_norm, 4))
-print("\nEquação de Diferenças:")
-equation = "y[n] = "
 for i, coeff in enumerate(h_norm):
-    if np.abs(coeff) > 1e-6:
-        term = f"{coeff:+.4f}x[n-{i}] "
-        equation += term
-print(equation.replace("+ -", "- ").strip())
+    print(f"h[{i:02d}] = {coeff:+.8f}")
+
+print("\nEquação de Diferenças:")
+print("y[n] = ")
+is_first_term = True
+for i, coeff in enumerate(h_norm):
+    if abs(coeff) > 1e-9:
+        if is_first_term:
+            print(f"  {coeff:.8f} * x[n-{i}]")
+            is_first_term = False
+        else:
+            print(f"  {coeff:+.8f} * x[n-{i}]")
+
+w, H = freqz(h_norm, 1, worN=2048)
+
+plt.figure(figsize=(12, 8))
+plt.plot(w / np.pi, 20 * np.log10(np.abs(H)))
+plt.title('Resposta de Frequência do Filtro Projetado (Hanning, M=22)')
+plt.xlabel('Frequência Normalizada (x π rad/amostra)')
+plt.ylabel('Magnitude (dB)')
+plt.grid(True)
+plt.ylim(-80, 5)
+plt.show()
