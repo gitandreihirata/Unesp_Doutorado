@@ -1,0 +1,16 @@
+Pergunta: Explique, em um curto parágrafo, o conceito de janela. Para que ela é usada? Por que ela é importante?
+
+Resposta:
+
+[cite_start]Uma janela, no contexto de processamento de sinais,
+é uma função de comprimento finito que é multiplicada por um segmento
+de um sinal. Seu uso principal ocorre em duas áreas: projeto de filtros FIR e análise de frequência.
+[cite_start]No projeto de filtros, uma janela é usada para truncar a resposta ao impulso infinita de um
+filtro ideal (como a função sinc), transformando-o em um filtro prático e de comprimento finito.
+[cite_start]Diferentes tipos de janelas, como Hanning ou Hamming, são aplicados para atenuar o
+"Efeito de Gibbs", que são flutuações indesejadas na resposta de frequência causadas pela truncagem abrupta
+de uma janela retangular. [cite_start]Seu segundo uso é na análise de sinais, onde um sinal de longa duração
+é multiplicado por uma janela antes que sua Transformada de Fourier seja calculada, a fim de evitar flutuações
+espúrias no domínio da frequência. A importância da janela reside na sua capacidade de viabilizar o projeto de
+filtros FIR práticos e de permitir uma análise espectral mais precisa de segmentos de sinais, controlando os
+efeitos colaterais da transição abrupta entre o sinal analisado e o zero.  
