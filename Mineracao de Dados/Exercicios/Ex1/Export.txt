@@ -1,0 +1,115 @@
+C:\Users\Andrei\PycharmProjects\Teste\.venv\Scripts\python.exe C:\Users\Andrei\PycharmProjects\Teste\Ex1.py 
+### Amostra do Dataset de Acidentes em SP (Dados Carregados com Sucesso):
+   data_inversa  ... houve_morte
+1    2023-01-01  ...           1
+8    2023-01-01  ...           0
+28   2023-01-02  ...           1
+75   2023-01-03  ...           0
+91   2023-01-04  ...           0
+
+[5 rows x 12 columns]
+
+==================================================
+
+### Informações Gerais:
+<class 'pandas.core.frame.DataFrame'>
+Index: 4754 entries, 1 to 67757
+Data columns (total 12 columns):
+ #   Column                  Non-Null Count  Dtype 
+---  ------                  --------------  ----- 
+ 0   data_inversa            4754 non-null   object
+ 1   dia_semana              4754 non-null   object
+ 2   horario                 4754 non-null   object
+ 3   condicao_metereologica  4754 non-null   object
+ 4   tipo_pista              4754 non-null   object
+ 5   tracado_via             4754 non-null   object
+ 6   uso_solo                4754 non-null   object
+ 7   pessoas                 4754 non-null   int64 
+ 8   feridos_leves           4754 non-null   int64 
+ 9   feridos_graves          4754 non-null   int64 
+ 10  causa_acidente          4754 non-null   object
+ 11  houve_morte             4754 non-null   int64 
+dtypes: int64(4), object(8)
+memory usage: 482.8+ KB
+
+==================================================
+
+### Estatísticas Descritivas:
+           pessoas  feridos_leves  feridos_graves  houve_morte
+count  4754.000000    4754.000000     4754.000000  4754.000000
+mean      2.519773       0.923012        0.172276     0.045015
+std       2.074493       0.971271        0.455443     0.207358
+min       1.000000       0.000000        0.000000     0.000000
+25%       2.000000       0.000000        0.000000     0.000000
+50%       2.000000       1.000000        0.000000     0.000000
+75%       3.000000       1.000000        0.000000     0.000000
+max      52.000000      35.000000        9.000000     1.000000
+
+==================================================
+
+### Distribuição da Variável Alvo ('houve_morte'):
+houve_morte
+0    0.954985
+1    0.045015
+Name: proportion, dtype: float64
+
+==================================================
+
+### Discretização do Horário em Períodos do Dia:
+     horario  hora_acidente periodo_dia
+1   03:40:00              3   Madrugada
+8   21:54:00             21       Noite
+28  15:16:00             15       Tarde
+75  21:10:00             21       Noite
+91  07:10:00              7       Manhã
+
+==================================================
+
+### Dimensões do dataset de features após One-Hot Encoding:
+(4754, 206)
+
+### Amostra dos dados com encoding:
+    pessoas  feridos_leves  ...  periodo_dia_Noite  periodo_dia_Tarde
+1         5              0  ...              False              False
+8         5              2  ...               True              False
+28        8              1  ...              False               True
+75        1              1  ...               True              False
+91        2              1  ...              False              False
+
+[5 rows x 206 columns]
+
+==================================================
+
+### Amostra dos Dados Após Escalonamento (Padronização Z-score):
+     pessoas  feridos_leves  ...  periodo_dia_Noite  periodo_dia_Tarde
+1   1.195708      -0.950414  ...              False              False
+8   1.195708       1.108961  ...               True              False
+28  2.641996       0.079273  ...              False               True
+75 -0.732677       0.079273  ...               True              False
+91 -0.250580       0.079273  ...              False              False
+
+[5 rows x 206 columns]
+
+==================================================
+
+### Ranking das 15 Features Mais Importantes:
+feridos_leves                                                              0.033114
+causa_acidente_Entrada inopinada do pedestre                               0.015981
+causa_acidente_Pedestre andava na pista                                    0.009900
+tracado_via_Retorno Regulamentado;Túnel;Declive                            0.008871
+causa_acidente_Declive acentuado                                           0.007657
+periodo_dia_Noite                                                          0.007162
+feridos_graves                                                             0.006160
+pessoas                                                                    0.005992
+tracado_via_Desvio Temporário;Em Obras;Curva                               0.005902
+dia_semana_sábado                                                          0.005587
+tracado_via_Declive;Viaduto;Retorno Regulamentado                          0.005283
+tracado_via_Reta;Viaduto;Aclive;Em Obras                                   0.005222
+causa_acidente_Condutor deixou de manter distância do veículo da frente    0.005058
+causa_acidente_Ingestão de álcool pelo condutor                            0.004854
+causa_acidente_Transitar na contramão                                      0.004594
+dtype: float64
+
+==================================================
+
+--- FIM DA ANÁLISE ---
