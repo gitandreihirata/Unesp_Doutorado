@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# # Notebook: Análise de Acidentes em Rodovias Federais de São Paulo
-
-# ## 1. Carregamento e Preparação Inicial dos Dados
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,8 +5,7 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_selection import mutual_info_classif
 
-# --- Carregamento dos Dados (LENDO O ARQUIVO LOCAL) ---
-# O código agora lê o arquivo que você baixou e renomeou.
+# Lendo arquivo.
 try:
     # O arquivo original da PRF usa codificação 'latin-1' e separador ';'.
     df_full = pd.read_csv('datatran2023.csv', sep=';', encoding='latin-1', low_memory=False)
