@@ -32,7 +32,7 @@ try:
     df['mp10'] = pd.to_numeric(df['mp10'], errors='coerce')
 
 
-    MONGO_URL = 'mongodb://digitalt_admin:dbZzyqe28%24%25@localhost:27017/digitalt_smartcitydb?authSource=digitalt_smartcitydb'
+    MONGO_URL = 'mongodb://x'
     client = MongoClient(MONGO_URL)
     db = client['digitalt_smartcitydb']
     collection = db['air_quality_data']

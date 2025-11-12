@@ -27,7 +27,7 @@ def define_classe_qualidade(valor):
 
 
 print("Conectando ao MongoDB...")
-MONGO_URL = 'mongodb://digitalt_admin:dbZzyqe28%24%25@localhost:27017/digitalt_smartcitydb?authSource=digitalt_smartcitydb'
+MONGO_URL = 'mongodb://x'
 DB_NAME = 'digitalt_smartcitydb'
 
 COLLECTION_NAME = 'air_quality_data'

@@ -7,7 +7,7 @@ import os
 
 
 def connect_to_db():
-    MONGO_URL = 'mongodb://digitalt_admin:dbZzyqe28%24%25@localhost:27017/digitalt_smartcitydb?authSource=digitalt_smartcitydb'
+    MONGO_URL = 'mongodb://x'
     client = MongoClient(MONGO_URL)
     db = client['digitalt_smartcitydb']
     return db, client
