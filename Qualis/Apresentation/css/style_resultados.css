@@ -1,0 +1,436 @@
+.api-card { display: flex; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 30px; align-items: center; padding: 40px; }
+.api-title { width: 30%; font-size: 32px; font-weight: 700; border-right: 2px solid rgba(255,255,255,0.1); margin-right: 40px; }
+.api-desc { width: 70%; font-size: 20px; color: #cbd5e1; line-height: 1.6; }
+
+.results-layout { display: flex; width: 100%; gap: 60px; margin-top: 40px; align-items: center;}
+.results-left { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.results-right { flex: 1; display: flex; justify-content: center; }
+.arrow-step { background: linear-gradient(90deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9)); padding: 30px 40px; border-radius: 8px; position: relative; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); }
+.arrow-step::after { content: ''; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); border-top: 20px solid transparent; border-bottom: 20px solid transparent; border-left: 20px solid rgba(15, 23, 42, 0.9); z-index: 10; }
+.arrow-step.green { border-left: 4px solid var(--neon-green); background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.9));}
+.arrow-step.blue { border-left: 4px solid #60a5fa; background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(15, 23, 42, 0.9));}
+.arrow-step.dark-blue { border-left: 4px solid #3b82f6; background: linear-gradient(90deg, rgba(30, 58, 138, 0.2), rgba(15, 23, 42, 0.9));}
+
+.browser-mockup { width: 100%; height: 450px; background: #0f172a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(110, 231, 183, 0.1); overflow: hidden; display: flex; flex-direction: column; }
+.browser-header { height: 40px; background: #1e293b; display: flex; align-items: center; padding: 0 15px; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; }
+.browser-dots { display: flex; gap: 6px; }
+.browser-dots span { width: 12px; height: 12px; border-radius: 50%; }
+.browser-dots span:nth-child(1) { background: #ef4444; }
+.browser-dots span:nth-child(2) { background: #eab308; }
+.browser-dots span:nth-child(3) { background: #22c55e; }
+.browser-url { position: absolute; left: 50%; transform: translateX(-50%); background: #0f172a; padding: 4px 15px; border-radius: 6px; font-size: 13px; color: #94a3b8; letter-spacing: 0.5px; }
+.browser-content { flex: 1; position: relative; background: #000; }
+
+.code-window { flex: 1; background: #0f172a; border-radius: 12px; border: 1px solid rgba(110, 231, 183, 0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.5); overflow: hidden; }
+.code-header { background: rgba(110, 231, 183, 0.1); padding: 12px 20px; color: var(--neon-green); font-family: monospace; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: bold; }
+.code-content { padding: 20px; color: #f8fafc; font-family: 'Courier New', monospace; font-size: 18px; line-height: 1.6; tab-size: 4; }
+.code-key { color: #93c5fd; }
+.code-string { color: #86efac; }
+.code-number { color: #fca5a5; }
+
+.dashboard-preview { position: relative; width: 100%; border-radius: 16px; overflow: hidden; border: 2px solid rgba(147, 197, 253, 0.4); }
+.dashboard-preview img { width: 100%; display: block; border-radius: 14px; }
+.dashboard-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 50px rgba(147, 197, 253, 0.3); pointer-events: none; }
+.kpi-card { display: flex; align-items: center; gap: 20px; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.05); padding: 15px 25px; border-radius: 12px; transition: transform 0.3s ease; }
+.kpi-card:hover { transform: translateX(15px); background: rgba(30, 41, 59, 0.8); }
+.kpi-icon { width: 50px; height: 50px; border-radius: 10px; background: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; font-size: 24px; color: #cbd5e1; }
+.kpi-icon.blue { background: rgba(147, 197, 253, 0.2); color: var(--neon-blue); }
+.kpi-icon.green { background: rgba(110, 231, 183, 0.2); color: var(--neon-green); }
+.kpi-info h5 { font-size: 18px; color: #f8fafc; margin-bottom: 5px; }
+.kpi-info p { font-size: 14px; color: #94a3b8; }
+
+
+/* ==========================================================================
+   SLIDE 12: PIPELINE DE DADOS ANIMADO
+   ========================================================================== */
+.pipeline-layout {
+    display: flex; width: 100%; max-width: 1300px; gap: 60px;
+    align-items: center; justify-content: space-between;
+}
+
+/* --- Lado Esquerdo: Caminho e Passos --- */
+.pipeline-steps-container {
+    flex: 1; position: relative; display: flex; flex-direction: column; gap: 40px;
+    padding-left: 40px; /* Espaço para a linha */
+}
+
+.pipeline-line {
+    position: absolute; left: 14px; top: 30px; bottom: 30px; width: 4px;
+    background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;
+}
+
+.data-particle {
+    position: absolute; top: -20px; left: 0; width: 100%; height: 30px;
+    background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
+    animation: flowDown 4s infinite linear;
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+@keyframes flowDown {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+.pipe-step {
+    display: flex; align-items: center; gap: 25px; position: relative;
+    background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05);
+    padding: 20px 30px; border-radius: 16px; backdrop-filter: blur(5px);
+    transition: transform 0.3s ease; cursor: default;
+}
+.pipe-step:hover { transform: translateX(10px); background: rgba(30, 41, 59, 0.8); }
+
+.pipe-node {
+    position: absolute; left: -52px; width: 30px; height: 30px;
+    background: #0b1120; border: 4px solid #64748b; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; z-index: 2;
+    transition: all 0.3s ease;
+}
+.pipe-node i { display: none; font-size: 14px; color: #fff; }
+.pipe-step:hover .pipe-node i { display: block; }
+
+.pipe-content h3 { font-size: 22px; margin-bottom: 8px; color: #f8fafc; transition: color 0.3s;}
+.pipe-content p { font-size: 16px; color: #94a3b8; line-height: 1.5; margin: 0; }
+
+/* Cores dos Passos */
+.step-green:hover { border-color: var(--neon-green); box-shadow: 0 10px 30px rgba(110, 231, 183, 0.1); }
+.step-green:hover .pipe-node { border-color: var(--neon-green); background: var(--neon-green); box-shadow: 0 0 20px var(--neon-green); }
+.step-green:hover h3 { color: var(--neon-green); }
+
+.step-blue:hover { border-color: var(--neon-blue); box-shadow: 0 10px 30px rgba(147, 197, 253, 0.1); }
+.step-blue:hover .pipe-node { border-color: var(--neon-blue); background: var(--neon-blue); box-shadow: 0 0 20px var(--neon-blue); }
+.step-blue:hover h3 { color: var(--neon-blue); }
+
+.step-purple:hover { border-color: #a78bfa; box-shadow: 0 10px 30px rgba(167, 139, 250, 0.1); }
+.step-purple:hover .pipe-node { border-color: #a78bfa; background: #a78bfa; box-shadow: 0 0 20px #a78bfa; }
+.step-purple:hover h3 { color: #a78bfa; }
+
+/* --- Lado Direito: Holograma --- */
+.pipeline-preview { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 25px; }
+
+.hologram-wrapper {
+    position: relative; border-radius: 16px; padding: 4px;
+    background: linear-gradient(135deg, rgba(147, 197, 253, 0.4), rgba(110, 231, 183, 0.1));
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(147, 197, 253, 0.2);
+    overflow: hidden;
+}
+
+.hologram-image {
+    display: block; width: 100%; max-width: 500px; border-radius: 12px;
+    filter: contrast(1.1) brightness(0.9);
+}
+
+.hologram-scanline {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(147, 197, 253, 0.1) 51%, transparent 100%);
+    background-size: 100% 4px; pointer-events: none; z-index: 5;
+}
+
+.status-badge-online {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 10;
+
+    /* Cores e Legibilidade */
+    background: rgba(6, 78, 59, 0.9); /* Verde escuro bem opaco para contraste */
+    border: 2px solid var(--neon-green);
+    color: #ffffff; /* Texto branco puro para leitura máxima */
+
+    /* Tipografia */
+    font-size: 16px; /* Aumentado de 12px para 16px */
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    /* Espaçamento e Bordas */
+    padding: 8px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    /* Efeitos Visuais */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(110, 231, 183, 0.4);
+    animation: pulseBadge 2s infinite;
+}
+
+/* Ajuste na animação para não perder legibilidade */
+@keyframes pulseBadge {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(110, 231, 183, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(110, 231, 183, 0.6); }
+}
+/* Badges de Demonstração */
+.demo-badges { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+.demo-badge {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    color: #cbd5e1; padding: 10px 20px; border-radius: 8px; font-size: 14px;
+    display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;
+}
+.demo-badge:hover { background: rgba(147, 197, 253, 0.1); border-color: var(--neon-blue); color: #fff; transform: translateY(-3px); }
+.demo-badge i { color: var(--neon-blue); font-size: 18px; }
+
+/* ==========================================================================
+   SLIDE 13: CENÁRIOS DE EXPERIMENTAÇÃO (BENTO GRID)
+   ========================================================================== */
+.scenarios-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 30px;
+}
+
+.bento-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* O cartão maior de destaque */
+.bento-large {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.bento-card:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.bento-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #475569;
+    transition: all 0.4s ease;
+}
+
+.bento-large .bento-icon {
+    font-size: 60px;
+    margin-bottom: 0;
+}
+
+.bento-card h3 {
+    color: #f8fafc;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.bento-card p {
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Efeitos de Luz Neon no Hover */
+.bento-card.blue-glow:hover { border-color: var(--neon-blue); box-shadow: 0 10px 30px rgba(147, 197, 253, 0.15); }
+.bento-card.blue-glow:hover .bento-icon { color: var(--neon-blue); text-shadow: 0 0 15px var(--neon-blue); transform: scale(1.1); }
+
+.bento-card.green-glow:hover { border-color: var(--neon-green); box-shadow: 0 10px 30px rgba(110, 231, 183, 0.15); }
+.bento-card.green-glow:hover .bento-icon { color: var(--neon-green); text-shadow: 0 0 15px var(--neon-green); transform: scale(1.1); }
+
+.bento-card.red-glow:hover { border-color: #ef4444; box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15); }
+.bento-card.red-glow:hover .bento-icon { color: #ef4444; text-shadow: 0 0 15px #ef4444; transform: scale(1.1) rotate(10deg); }
+
+/* ==========================================================================
+   SLIDE 11: TERMINAL DE APIS (INTEGRAÇÃO)
+   ========================================================================== */
+.api-dashboard {
+    width: 100%; max-width: 1200px;
+    display: flex; flex-direction: column; gap: 30px;
+}
+
+.api-cards-container {
+    display: flex; gap: 30px; width: 100%;
+}
+
+.api-card-interactive {
+    flex: 1; display: flex; align-items: center; gap: 20px;
+    background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.05);
+    padding: 25px 30px; border-radius: 16px; backdrop-filter: blur(10px);
+    cursor: pointer; transition: all 0.3s ease;
+}
+
+.api-icon {
+    font-size: 45px; color: #475569; transition: all 0.3s ease;
+}
+
+.api-info h3 { font-size: 24px; color: #f8fafc; margin-bottom: 8px; transition: color 0.3s;}
+.api-info p { font-size: 16px; color: #94a3b8; line-height: 1.5; }
+
+/* Efeitos Hover - Azul (Clima) */
+.api-card-interactive.api-blue:hover { transform: translateY(-5px); border-color: var(--neon-blue); box-shadow: 0 10px 30px rgba(147, 197, 253, 0.15); background: rgba(30, 41, 59, 0.9); }
+.api-card-interactive.api-blue:hover .api-icon { color: var(--neon-blue); text-shadow: 0 0 15px var(--neon-blue); transform: scale(1.1); }
+.api-card-interactive.api-blue:hover h3 { color: var(--neon-blue); }
+
+/* Efeitos Hover - Verde (Tempo) */
+.api-card-interactive.api-green:hover { transform: translateY(-5px); border-color: var(--neon-green); box-shadow: 0 10px 30px rgba(110, 231, 183, 0.15); background: rgba(30, 41, 59, 0.9); }
+.api-card-interactive.api-green:hover .api-icon { color: var(--neon-green); text-shadow: 0 0 15px var(--neon-green); transform: scale(1.1); }
+.api-card-interactive.api-green:hover h3 { color: var(--neon-green); }
+
+/* Janela do Terminal */
+.api-terminal-container {
+    background: #0f172a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.5);
+    overflow: hidden; display: flex; flex-direction: column; height: 350px;
+}
+
+.api-terminal-container .terminal-header {
+    background: #1e293b; padding: 12px 20px; display: flex; align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05); position: relative;
+}
+
+.api-terminal-container .file-name {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    font-size: 13px; color: #94a3b8; font-family: 'Courier New', Courier, monospace;
+}
+
+.api-terminal-container .terminal-body {
+    padding: 25px; flex: 1; overflow-y: auto; background: #000;
+}
+
+.api-terminal-container pre { margin: 0; }
+.api-terminal-container code {
+    font-family: 'Courier New', Courier, monospace; font-size: 17px;
+    color: #e2e8f0; line-height: 1.6; tab-size: 4; display: block;
+}
+
+
+
+/* ==========================================================================
+   SLIDE 12B: PROTÓTIPO EM AÇÃO (LISTA E BADGE)
+   ========================================================================== */
+
+/* Lista de Features Dinâmica */
+.feature-list {
+    display: flex; flex-direction: column; gap: 15px;
+}
+
+.feature-item {
+    display: flex; align-items: center; gap: 20px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    padding: 15px 20px; border-radius: 12px; transition: all 0.3s ease;
+    cursor: default;
+}
+
+.feature-item:hover {
+    background: rgba(147, 197, 253, 0.1);
+    border-color: var(--neon-blue);
+    transform: translateX(10px);
+}
+
+.feature-icon {
+    width: 45px; height: 45px; background: rgba(15, 23, 42, 0.8);
+    border-radius: 10px; display: flex; justify-content: center; align-items: center;
+    color: var(--neon-blue); font-size: 20px; border: 1px solid rgba(147, 197, 253, 0.2);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    background: var(--neon-blue); color: #000;
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.feature-item span {
+    font-size: 18px; color: #cbd5e1; font-weight: 500; transition: color 0.3s;
+}
+
+.feature-item:hover span {
+    color: #fff;
+}
+
+/* Badge 'LIVE WEBGL' no Vídeo */
+.live-badge {
+    position: absolute; top: -15px; right: 20px; z-index: 20;
+    background: #ef4444; color: #fff; font-size: 12px; font-weight: bold;
+    padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); letter-spacing: 1px;
+}
+
+.pulse-dot {
+    width: 8px; height: 8px; background: #fff; border-radius: 50%;
+    animation: blinkDot 1s infinite;
+}
+
+@keyframes blinkDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+
+
+/* ==========================================================================
+   SLIDE 12C: DADOS JSON LIVE TERMINAL
+   ========================================================================== */
+.live-terminal {
+    position: relative; flex: 1; border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.terminal-green { border: 1px solid rgba(110, 231, 183, 0.4); }
+.terminal-green .code-header { background: rgba(110, 231, 183, 0.1); color: var(--neon-green); }
+
+.terminal-blue { border: 1px solid rgba(147, 197, 253, 0.4); }
+.terminal-blue .code-header { background: rgba(147, 197, 253, 0.1); color: var(--neon-blue); }
+
+.live-terminal .code-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px; font-family: 'Courier New', Courier, monospace; font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.live-terminal .code-content { position: relative; overflow: hidden; padding: 30px;}
+
+.scanline {
+    position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    background: rgba(255,255,255,0.1); box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    animation: terminalScan 3s linear infinite; pointer-events: none;
+}
+@keyframes terminalScan { 0% { top: -10%; } 100% { top: 110%; } }
+
+.blink-icon { animation: blink 1s infinite step-end; }
+@keyframes blink { 50% { opacity: 0.3; } }
+
+/* Destaque para Dados Enriquecidos (APIs) */
+.enriched-data {
+    background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px;
+    border: 1px dashed rgba(255,255,255,0.3); transition: all 0.3s ease;
+}
+.enriched-data:hover { background: rgba(255,255,255,0.2); }
+
+.enriched-icon { font-size: 14px; color: #94a3b8; margin-left: 5px; }
+.terminal-green .enriched-icon { color: var(--neon-green); }
+.terminal-blue .enriched-icon { color: var(--neon-blue); }
+
+/* Ícone central de HTTP POST */
+.post-anim-center {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; align-items: center;
+    color: #475569; z-index: 10; font-family: 'Courier New', Courier, monospace;
+}
+.post-anim-center i { font-size: 30px; margin-bottom: 5px; color: #94a3b8; animation: pulseColor 2s infinite alternate;}
+.post-anim-center span { font-size: 12px; font-weight: bold; background: #0f172a; padding: 2px 5px; border-radius: 4px;}
+.post-ping {
+    position: absolute; top: 15px; width: 40px; height: 40px; border-radius: 50%;
+    border: 2px solid var(--neon-green); animation: ping 2s infinite;
+}
+
+@keyframes pulseColor { 0% { color: var(--neon-blue); } 100% { color: var(--neon-green); } }
+@keyframes ping { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+
+/* Flash verde/azul quando o JS atualiza o número */
+.highlight-flash { transition: color 0.1s, text-shadow 0.1s; }
+.flash-active-green { color: #fff !important; text-shadow: 0 0 10px var(--neon-green); }
+.flash-active-blue { color: #fff !important; text-shadow: 0 0 10px var(--neon-blue); }

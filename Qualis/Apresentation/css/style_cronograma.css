@@ -1,0 +1,77 @@
+/* ==========================================================================
+   SLIDE 14: CRONOGRAMA INTERATIVO
+   ========================================================================== */
+.timeline-navigation { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; position: relative; margin-top: 40px; }
+.timeline-navigation::before { content: ''; position: absolute; top: 22px; left: 50px; right: 50px; height: 4px; background: rgba(255,255,255,0.1); z-index: 0; }
+.timeline-nav-item { position: relative; z-index: 1; cursor: pointer; text-align: center; transition: transform 0.3s ease; width: 250px; }
+.timeline-nav-item:hover { transform: scale(1.05); }
+.nav-dot { width: 48px; height: 48px; border-radius: 50%; background: #1e293b; border: 4px solid #64748b; margin: 0 auto 20px; transition: all 0.4s ease; }
+.timeline-nav-item.completed .nav-dot { border-color: var(--neon-green); background: var(--neon-green); box-shadow: 0 0 20px rgba(110, 231, 183, 0.4); }
+.timeline-nav-item.in-progress .nav-dot { border-color: var(--neon-blue); background: var(--neon-blue); box-shadow: 0 0 20px rgba(147, 197, 253, 0.4); }
+.nav-year { display: block; font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 5px; }
+.nav-label { font-size: 16px; color: #94a3b8; }
+.status-badge { margin-top: 15px; display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.timeline-nav-item.completed .status-badge { background: rgba(110, 231, 183, 0.1); color: var(--neon-green); }
+.timeline-nav-item.in-progress .status-badge { background: rgba(147, 197, 253, 0.1); color: var(--neon-blue); }
+.timeline-nav-item.future .status-badge { background: rgba(255,255,255,0.05); color: #64748b; }
+
+.detail-year-header { border-bottom: 2px solid var(--neon-blue); padding-bottom: 15px; margin-bottom: 25px; }
+.activity-list { list-style: none; padding: 0; }
+.activity-item { display: flex; gap: 20px; padding: 12px; border-radius: 8px; margin-bottom: 10px; background: rgba(255,255,255,0.02); }
+.activity-status { width: 40px; font-weight: 800; }
+.status-c { color: var(--neon-green); }
+.status-ed { color: var(--neon-blue); }
+.status-x { color: #64748b; }
+
+/* ==========================================================================
+   SLIDE 14B: CONCLUSÃO PARCIAL (ACHIEVEMENTS & PROGRESSO)
+   ========================================================================== */
+.phd-progress-container { width: 100%; max-width: 1000px; margin-bottom: 40px; }
+.phd-progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px; position: relative; overflow: hidden; margin-bottom: 15px; }
+.phd-progress-fill { height: 100%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-green)); border-radius: 4px; box-shadow: 0 0 15px var(--neon-green); animation: fillProgress 1.5s ease-out forwards; width: 0; }
+
+@keyframes fillProgress { 0% { width: 0; } 100% { width: 66%; } }
+
+.phd-milestones { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.milestone.done { color: var(--neon-green); text-shadow: 0 0 10px rgba(110, 231, 183, 0.4); }
+.milestone.future { color: #64748b; }
+
+.conclusion-container { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 1000px; }
+
+.conclusion-card { display: flex; align-items: center; gap: 30px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px 40px; border-radius: 16px; transition: all 0.4s ease; position: relative; overflow: hidden; backdrop-filter: blur(10px); }
+.conclusion-card:hover { transform: translateX(10px); background: rgba(30, 41, 59, 0.8); border-color: rgba(255, 255, 255, 0.2); }
+
+.achievement-badge { position: absolute; top: 15px; right: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4px 10px; border-radius: 8px; background: rgba(110, 231, 183, 0.1); color: var(--neon-green); border: 1px solid var(--neon-green); letter-spacing: 1px; }
+.active-badge { background: rgba(147, 197, 253, 0.2); color: var(--neon-blue); border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(147, 197, 253, 0.4); animation: pulseActiveBadge 2s infinite; }
+
+@keyframes pulseActiveBadge { 0%, 100% { box-shadow: 0 0 10px rgba(147, 197, 253, 0.4); } 50% { box-shadow: 0 0 25px rgba(147, 197, 253, 0.8); } }
+
+.conclusion-status { font-size: 45px; color: var(--neon-green); filter: drop-shadow(0 0 10px var(--neon-green)); transition: transform 0.4s; }
+.conclusion-card:hover .conclusion-status { transform: scale(1.2) rotate(5deg); }
+
+.conclusion-text h4 { font-size: 24px; color: #fff; margin-bottom: 8px; }
+.conclusion-text p { font-size: 18px; color: #94a3b8; line-height: 1.5; margin: 0; }
+
+.glow-card { border-left: 6px solid var(--neon-blue); background: rgba(147, 197, 253, 0.05); }
+.glow-card:hover { border-color: var(--neon-blue); box-shadow: 0 0 40px rgba(147, 197, 253, 0.15); }
+.glow-card .conclusion-status { color: var(--neon-blue); filter: drop-shadow(0 0 10px var(--neon-blue)); }
+.pulse { animation: pulseIcon 2s infinite; }
+
+@keyframes pulseIcon { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
+
+/* ==========================================================================
+   SLIDE 14C: TRABALHOS FUTUROS
+   ========================================================================== */
+.future-axes-container { display: flex; justify-content: space-between; gap: 30px; width: 100%; max-width: 1200px; }
+.axis-card { flex: 1; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 30px; backdrop-filter: blur(10px); transition: transform 0.3s ease; }
+.axis-card:hover { transform: translateY(-10px); }
+.axis-card.highlight-axis { background: rgba(15, 23, 42, 0.8); border-color: rgba(110, 231, 183, 0.3); box-shadow: 0 10px 30px rgba(110, 231, 183, 0.1); transform: scale(1.05); }
+.axis-card.highlight-axis:hover { transform: scale(1.05) translateY(-10px); }
+.axis-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.axis-number { font-size: 40px; font-weight: 800; color: rgba(255,255,255,0.05); line-height: 1; }
+.axis-header i { font-size: 30px; }
+.axis-card h4 { font-size: 22px; margin-bottom: 20px; }
+.axis-list { list-style: none; padding: 0; }
+.axis-list li { font-size: 16px; color: #cbd5e1; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+.axis-list li i { color: #64748b; font-size: 14px; margin-top: 4px; }
+.highlight-axis .axis-list li i { color: var(--neon-green); }

@@ -1,0 +1,161 @@
+#slide-1 .bg-image, #slide-15 .bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1920&q=80') center/cover; opacity: 0.3; z-index: -1; }
+#slide-15 .bg-image { opacity: 0.15; filter: hue-rotate(180deg); }
+#slide-1 .bg-image { display: none; }
+#slide-1 .content { margin-top: auto; padding: 100px; margin-bottom: 50px; position: relative; z-index: 2;}
+#slide-1 h1 { font-size: 85px; color: #fff; margin-bottom: 20px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+#slide-1 h2 { font-size: 36px; color: var(--neon-green); margin-bottom: 60px; font-weight: 500; }
+#slide-1 p { font-size: 22px; color: #cbd5e1; margin-bottom: 10px; }
+
+.video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -2; }
+.video-container video { min-width: 100%; min-height: 100%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(11, 17, 32, 0.85) 0%, rgba(11, 17, 32, 0.4) 100%); z-index: -1; }
+
+.cyber-grid {
+    position: absolute; bottom: -100px; left: 0; width: 100%; height: 60%;
+    background: linear-gradient(transparent 65%, rgba(110, 231, 183, 0.4) 75%, transparent 80%),
+    linear-gradient(90deg, transparent 65%, rgba(110, 231, 183, 0.4) 75%, transparent 80%);
+    background-size: 80px 80px; transform: perspective(600px) rotateX(75deg);
+    transform-origin: bottom center; opacity: 0.2; z-index: 0;
+    animation: gridMove 1.5s linear infinite;
+}
+@keyframes gridMove { 0% { background-position: 0 0; } 100% { background-position: 0 80px; } }
+
+/* ==========================================================================
+   SLIDE 15: RODOVIA DA BANCA (CARROS ANIMADOS)
+   ========================================================================== */
+.banca-highway-container {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    height: 400px;
+    margin-top: 50px;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* A Pista */
+.highway-road {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 60px;
+    background: #0f172a;
+    border-top: 2px solid rgba(255,255,255,0.1);
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+.highway-lines {
+    position: absolute;
+    top: 50%; left: 0; width: 200%; height: 4px;
+    background: repeating-linear-gradient(90deg, #fbbf24 0, #fbbf24 40px, transparent 40px, transparent 80px);
+    transform: translateY(-50%);
+    opacity: 0.5;
+    animation: moveRoad 20s linear infinite;
+}
+
+@keyframes moveRoad {
+    0% { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(-50%); }
+}
+
+/* Frota de Carros */
+.cars-fleet {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 50px;
+    position: relative;
+    z-index: 10;
+}
+
+/* O Slot (Contêiner) de cada Carro + Holograma */
+.prof-vehicle-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    /* Animação de entrada dos carros */
+    transform: translateX(-2000px);
+    animation: driveInAndPark 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes driveInAndPark {
+    0% { transform: translateX(-2000px); }
+    70% { transform: translateX(20px); } /* Passa um pouquinho e freia */
+    100% { transform: translateX(0); }
+}
+
+/* O Holograma (Cartão com o Nome) */
+.prof-holo-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-radius: 12px;
+    padding: 20px 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    position: relative;
+    /* Animação de ligar o holograma APÓS o carro estacionar */
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    animation: bootHologram 0.5s ease forwards;
+    animation-delay: calc(var(--delay) + 1.2s); /* Liga logo após freiar */
+}
+
+/* Gambiarra elegante para usar o mesmo delay do carro no holograma */
+.prof-vehicle-slot:nth-child(1) .prof-holo-card { animation-delay: 1.8s; }
+.prof-vehicle-slot:nth-child(2) .prof-holo-card { animation-delay: 2.3s; }
+.prof-vehicle-slot:nth-child(3) .prof-holo-card { animation-delay: 2.8s; }
+.prof-vehicle-slot:nth-child(4) .prof-holo-card { animation-delay: 3.3s; }
+.prof-vehicle-slot:nth-child(5) .prof-holo-card { animation-delay: 3.8s; }
+
+@keyframes bootHologram {
+    0% { opacity: 0; transform: translateY(20px) scale(0.8); }
+    50% { opacity: 0.5; transform: translateY(-5px) scale(1.05); filter: brightness(2); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1); }
+}
+
+/* Feixe de luz do Holograma ligando o carro ao cartão */
+.prof-holo-card::after {
+    content: ''; position: absolute; bottom: -20px; left: 50%;
+    transform: translateX(-50%); width: 0; height: 0;
+    border-left: 15px solid transparent; border-right: 15px solid transparent;
+}
+
+.orientador-card {
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 10px 30px rgba(110, 231, 183, 0.1), inset 0 0 15px rgba(110, 231, 183, 0.1);
+}
+.orientador-card::after { border-top: 20px solid rgba(110, 231, 183, 0.4); filter: drop-shadow(0 0 5px var(--neon-green)); }
+
+.membro-card {
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 10px 30px rgba(147, 197, 253, 0.1), inset 0 0 15px rgba(147, 197, 253, 0.1);
+}
+.membro-card::after { border-top: 20px solid rgba(147, 197, 253, 0.4); filter: drop-shadow(0 0 5px var(--neon-blue)); }
+
+/* Tipografia dos Cartões */
+.prof-holo-card .role { font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
+.orientador-card .role { color: var(--neon-green); }
+.membro-card .role { color: var(--neon-blue); }
+
+.prof-holo-card .name { color: #fff; font-size: 16px; font-weight: 700; line-height: 1.3; margin-bottom: 5px; }
+.prof-holo-card .inst { color: #94a3b8; font-size: 13px; font-weight: 600; }
+
+/* O Carro */
+.prof-car {
+    font-size: 60px;
+    position: relative;
+    margin-bottom: -15px; /* Alinha o pneu com a pista */
+}
+
+.green-car { color: #6ee7b7; text-shadow: 0 5px 15px rgba(110, 231, 183, 0.5); }
+.blue-car { color: #93c5fd; text-shadow: 0 5px 15px rgba(147, 197, 253, 0.5); }
+
+/* Farol do Carro */
+.car-light {
+    position: absolute; right: -20px; top: 25px; width: 40px; height: 10px;
+    border-radius: 50%; opacity: 0.8;
+}
+.green-car .car-light { background: radial-gradient(ellipse, #fff, rgba(110, 231, 183, 0.8), transparent); box-shadow: 20px 0 30px var(--neon-green); }
+.blue-car .car-light { background: radial-gradient(ellipse, #fff, rgba(147, 197, 253, 0.8), transparent); box-shadow: 20px 0 30px var(--neon-blue); }
